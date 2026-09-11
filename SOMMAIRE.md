@@ -15,6 +15,17 @@ Légende : ✅ fait · ⬜ à faire
 | 5 | ⬜ | Créer une commande slash personnalisée réutilisable | — | #claude-code #commandes |
 | 6 | ✅ | CLAUDE.md global vs CLAUDE.md par projet | [fiches/claude-md-global-vs-projet.md](fiches/claude-md-global-vs-projet.md) | #claude-code #memoire |
 | 7 | ⬜ | Découper l'exploration d'un gros repo existant par lot | — | #claude-code #contexte |
+| 16 | ✅ | Piloter un projet applicatif découpé en lots (index → fiches 17-21) | [fiches/piloter-projet-decoupe-en-lots.md](fiches/piloter-projet-decoupe-en-lots.md) | #claude-code #planification #methode |
+| 17 | ✅ | Deux documents vivants : PLAN.md et CONTROL_PLAN.md | [fiches/documents-vivants-plan-et-control-plan.md](fiches/documents-vivants-plan-et-control-plan.md) | #claude-code #planification #methode |
+| 18 | ✅ | Vérifier le périmètre d'un lot avant d'implémenter une demande limite | [fiches/verifier-perimetre-lot-avant-implementation.md](fiches/verifier-perimetre-lot-avant-implementation.md) | #claude-code #planification |
+| 19 | ✅ | Vérifier par test automatisé que le métier n'importe jamais l'UI | [fiches/tester-separation-metier-ui-imports.md](fiches/tester-separation-metier-ui-imports.md) | #claude-code #architecture #tests |
+| 20 | ✅ | Relancer réellement l'application avant de déclarer un lot terminé | [fiches/smoke-test-avant-cloture-lot.md](fiches/smoke-test-avant-cloture-lot.md) | #claude-code #tests #qualite |
+| 21 | ✅ | Passer en mode plan face à une demande ambiguë ou structurante | [fiches/quand-passer-en-mode-plan.md](fiches/quand-passer-en-mode-plan.md) | #claude-code #planification |
+| 22 | ✅ | Utiliser un Skill Claude Code pour réutiliser une procédure entre projets | [fiches/utiliser-un-skill-claude-code.md](fiches/utiliser-un-skill-claude-code.md) | #claude-code #skills #memoire |
+| 23 | ✅ | Partager un Skill entre personnes, projets et sessions (index → fiches 24-26) | [fiches/partager-un-skill-claude-code.md](fiches/partager-un-skill-claude-code.md) | #claude-code #skills #methode |
+| 24 | ✅ | Partager un skill avec son équipe via le dépôt git | [fiches/partager-skill-equipe-git.md](fiches/partager-skill-equipe-git.md) | #claude-code #skills |
+| 25 | ✅ | Réutiliser un skill sur plusieurs projets non liés | [fiches/reutiliser-skill-plusieurs-projets.md](fiches/reutiliser-skill-plusieurs-projets.md) | #claude-code #skills |
+| 26 | ✅ | Garder un skill à jour entre ses différentes utilisations | [fiches/synchroniser-skill-entre-usages.md](fiches/synchroniser-skill-entre-usages.md) | #claude-code #skills |
 
 ## Gestion du contexte
 
