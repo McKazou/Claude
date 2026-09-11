@@ -75,6 +75,8 @@ Après avoir créé ou complété une fiche, mettre à jour `SOMMAIRE.md` :
 - Ajouter le lien hypertexte relatif vers le fichier
 - Garder les tags cohérents avec ceux de la fiche
 
+Chaque ligne du sommaire a un ID numérique unique (colonne `ID`), attribué une fois pour toutes dans l'ordre d'apparition dans le document. Pour ajouter une nouvelle ligne, lui donner le numéro suivant (max actuel + 1) — ne jamais réutiliser ou renuméroter un ID existant, l'utilisateur s'en sert pour désigner un sujet ("la fiche numéro 6").
+
 Ne jamais laisser une fiche créée sans entrée correspondante dans le sommaire — le sommaire est le seul point d'entrée pour retrouver une fiche.
 
 ## Ce que Claude Code doit faire quand on lui demande d'ajouter un sujet
