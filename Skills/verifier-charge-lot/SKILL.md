@@ -1,6 +1,11 @@
+---
+name: verifier-charge-lot
+description: Avant de valider l'affectation d'une tâche à un lot précis dans un plan découpé en lots, vérifier que le lot visé n'est pas déjà trop chargé et si des tâches proches gagneraient à être regroupées avec elle. À utiliser quand l'utilisateur propose "mets telle tâche dans le lot X" ou fait évoluer un découpage en lots.
+---
+
 # Vérifier la charge d'un lot avant d'y affecter une tâche
 
-**Symptôme / contexte** : lors de la construction ou de l'évolution d'un plan découpé en lots, l'utilisateur propose de mettre une tâche dans un lot précis, et cette affectation est validée sans se demander si le lot visé n'est pas déjà trop chargé, ni si d'autres tâches proches ne gagneraient pas à être déplacées ou regroupées avec elle.
+**Symptôme / contexte** : lors de la construction ou de l'évolution d'un plan découpé en lots, l'utilisateur propose de mettre une tâche dans un lot précis, et cette affectation risque d'être validée sans se demander si le lot visé n'est pas déjà trop chargé, ni si d'autres tâches proches ne gagneraient pas à être déplacées ou regroupées avec elle.
 
 **Quoi** : avant de valider l'affectation d'une tâche à un lot mentionné, vérifier deux points : 1) le lot visé n'est pas déjà trop chargé pour absorber cette tâche sans devenir un lot fourre-tout ; 2) il ne serait pas plus cohérent de déplacer ou d'ajouter d'autres tâches proches dans ce même lot.
 
@@ -12,10 +17,6 @@
 
 **Pourquoi** : sans cette vérification, un lot grossit au fil des demandes ponctuelles jusqu'à devenir invalidable en bloc, et des tâches proches restent dispersées entre plusieurs lots alors qu'elles auraient gagné à être traitées ensemble.
 
-**Limites** : s'applique au moment où le découpage en lots est construit ou modifié, pas à l'implémentation d'une demande une fois le lot déjà figé et en cours — dans ce second cas, voir [verifier-perimetre-lot-avant-implementation.md](verifier-perimetre-lot-avant-implementation.md).
+**Limites** : s'applique au moment où le découpage en lots est construit ou modifié, pas à l'implémentation d'une demande une fois le lot déjà figé et en cours — dans ce second cas, voir le skill `verifier-perimetre-lot`.
 
-→ Skill : `Skills/verifier-charge-lot/SKILL.md`
-
----
-Tags : #claude-code #planification #methode
-Dernière vérification : septembre 2026
+Source : `Fiches/verifier-charge-lot-lors-du-decoupage.md`

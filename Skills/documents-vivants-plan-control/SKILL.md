@@ -1,6 +1,11 @@
+---
+name: documents-vivants-plan-control
+description: Créer et tenir à jour deux documents séparés dans un projet découpé en lots — PLAN.md (décisions et leur justification) et CONTROL_PLAN.md (contrôles et leur état de vérification) — dès le lot 1. À utiliser au démarrage d'un projet en lots et à chaque fonctionnalité livrée.
+---
+
 # Deux documents vivants : PLAN.md et CONTROL_PLAN.md
 
-**Symptôme / contexte** : je démarre un projet découpé en lots et je ne sais pas où consigner les décisions prises par rapport à ce qui est effectivement vérifié.
+**Symptôme / contexte** : un projet démarre découpé en lots et il n'est pas clair où consigner les décisions prises par rapport à ce qui est effectivement vérifié.
 
 **Quoi** : séparer le document de plan (quoi a été décidé, pourquoi) du document de contrôle (quoi est vérifié, comment) plutôt que de tout mélanger dans un seul fichier, et les tenir à jour au fil de l'eau.
 
@@ -14,8 +19,4 @@
 
 **Limites** : pour un projet très court ou à lot unique, la séparation ajoute de la charge de documentation sans bénéfice proportionné.
 
-→ Skill : `Skills/documents-vivants-plan-control/SKILL.md`
-
----
-Tags : #claude-code #planification #methode
-Dernière vérification : septembre 2026
+Source : `Fiches/documents-vivants-plan-et-control-plan.md`

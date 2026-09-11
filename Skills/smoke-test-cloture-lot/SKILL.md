@@ -1,6 +1,11 @@
+---
+name: smoke-test-cloture-lot
+description: Relancer réellement l'application (mode headless ou équivalent) et envoyer une action de fumée minimale avant de déclarer un lot ou un changement notable terminé, même si les tests unitaires passent tous. À utiliser avant toute déclaration de fin de lot ou de tâche.
+---
+
 # Relancer réellement l'application avant de déclarer un lot terminé
 
-**Symptôme / contexte** : les tests automatisés passent tous, mais je ne suis pas sûr que l'application démarre vraiment en conditions réelles.
+**Symptôme / contexte** : les tests automatisés passent tous, mais rien ne garantit que l'application démarre vraiment en conditions réelles.
 
 **Quoi** : relancer l'application (mode headless ou équivalent le plus proche d'un démarrage réel) après un changement notable, en plus des tests unitaires, avant de déclarer le travail terminé.
 
@@ -14,8 +19,4 @@
 
 **Limites** : demande que l'application puisse démarrer rapidement en local ; moins pertinent pour une bibliothèque sans point d'entrée exécutable.
 
-→ Skill : `Skills/smoke-test-cloture-lot/SKILL.md`
-
----
-Tags : #claude-code #tests #qualite
-Dernière vérification : septembre 2026
+Source : `Fiches/smoke-test-avant-cloture-lot.md`

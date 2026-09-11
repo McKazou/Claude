@@ -1,6 +1,11 @@
+---
+name: verifier-perimetre-lot
+description: Avant d'implémenter une demande qui semble déborder du lot en cours, vérifier explicitement dans le cahier des charges de référence à quel lot elle appartient réellement, puis le signaler clairement avant de continuer. À utiliser dans un projet découpé en lots quand une demande utilisateur semble empiéter sur un lot futur.
+---
+
 # Vérifier le périmètre d'un lot avant d'implémenter une demande limite
 
-**Symptôme / contexte** : une demande utilisateur semble déborder du lot en cours et je ne sais pas si je dois l'implémenter directement ou la signaler d'abord.
+**Symptôme / contexte** : une demande utilisateur semble déborder du lot en cours et il n'est pas clair si elle doit être implémentée directement ou signalée d'abord.
 
 **Quoi** : vérifier explicitement dans le cahier des charges de référence à quel lot appartient réellement la demande, plutôt que de le supposer, puis le dire clairement avant de continuer.
 
@@ -15,8 +20,4 @@
 
 **Limites** : inutile si le projet n'a pas de découpage en lots formalisé ni de cahier des charges de référence à consulter.
 
-→ Skill : `Skills/verifier-perimetre-lot/SKILL.md`
-
----
-Tags : #claude-code #planification
-Dernière vérification : septembre 2026
+Source : `Fiches/verifier-perimetre-lot-avant-implementation.md`

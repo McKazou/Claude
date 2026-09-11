@@ -28,6 +28,7 @@ Légende : ✅ fait · ⬜ à faire
 | 25 | ✅ | Réutiliser un skill sur plusieurs projets non liés | [fiches/reutiliser-skill-plusieurs-projets.md](fiches/reutiliser-skill-plusieurs-projets.md) | #claude-code #skills |
 | 26 | ✅ | Garder un skill à jour entre ses différentes utilisations | [fiches/synchroniser-skill-entre-usages.md](fiches/synchroniser-skill-entre-usages.md) | #claude-code #skills |
 | 28 | ✅ | Bonnes pratiques pour rédiger un SKILL.md | [fiches/bonnes-pratiques-rediger-skill.md](fiches/bonnes-pratiques-rediger-skill.md) | #claude-code #skills #methode |
+| 29 | ✅ | Convertir une fiche en Skill Claude Code | [fiches/convertir-une-fiche-en-skill.md](fiches/convertir-une-fiche-en-skill.md) | #claude-code #skills #methode |
 
 ## Gestion du contexte
 

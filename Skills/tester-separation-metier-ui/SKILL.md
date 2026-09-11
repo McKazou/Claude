@@ -1,6 +1,11 @@
+---
+name: tester-separation-metier-ui
+description: Écrire un test automatisé qui parcourt les imports du dossier métier et échoue si l'un d'eux importe le module de rendu/UI, pour garantir dans la durée qu'une architecture métier/UI séparée le reste. À utiliser dès que cette séparation existe dans le code d'un projet.
+---
+
 # Vérifier par test automatisé que le métier n'importe jamais l'UI
 
-**Symptôme / contexte** : je veux garantir qu'une règle d'architecture (« la logique métier ne dépend pas du rendu ») reste vraie dans la durée, pas seulement au moment où je l'écris.
+**Symptôme / contexte** : garantir qu'une règle d'architecture (« la logique métier ne dépend pas du rendu ») reste vraie dans la durée, pas seulement au moment où elle est écrite.
 
 **Quoi** : un test automatisé qui parcourt les imports du dossier métier et échoue si l'un d'eux importe le module de rendu/UI, plutôt qu'une convention documentée seulement en commentaire.
 
@@ -14,8 +19,4 @@
 
 **Limites** : suppose une frontière métier/UI déjà identifiable en dossiers ou modules séparés — inapplicable si l'architecture n'a pas encore cette séparation.
 
-→ Skill : `Skills/tester-separation-metier-ui/SKILL.md`
-
----
-Tags : #claude-code #architecture #tests
-Dernière vérification : septembre 2026
+Source : `Fiches/tester-separation-metier-ui-imports.md`

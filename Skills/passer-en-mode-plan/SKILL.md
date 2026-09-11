@@ -1,6 +1,11 @@
+---
+name: passer-en-mode-plan
+description: Passer en Plan Mode et poser explicitement les questions de choix avant d'écrire le plan final, quand une demande touche plusieurs fichiers, a plusieurs réponses de conception raisonnables, ou un périmètre pas évident. À utiliser avant d'écrire du code sur une tâche ambiguë ou structurante.
+---
+
 # Passer en mode plan face à une demande ambiguë ou structurante
 
-**Symptôme / contexte** : une demande touche plusieurs fichiers ou a plusieurs réponses de conception raisonnables, et je ne suis pas sûr de la direction à prendre avant de coder.
+**Symptôme / contexte** : une demande touche plusieurs fichiers ou a plusieurs réponses de conception raisonnables, et la direction à prendre n'est pas sûre avant de coder.
 
 **Quoi** : passer en mode plan, explorer le code existant, puis poser explicitement les questions de choix avant d'écrire le plan final — plutôt que deviner silencieusement une préférence de conception.
 
@@ -12,10 +17,6 @@
 
 **Pourquoi** : deviner silencieusement une préférence de conception qui aurait pu être tranchée par une question simple coûte bien plus cher à corriger une fois le code écrit.
 
-**Limites** : inutile sur une tâche au périmètre évident et court — ça ralentit sans bénéfice. Complémentaire de la fiche sur la sortie du mode plan (relecture du plan avant de désactiver le mode), pas un doublon.
+**Limites** : inutile sur une tâche au périmètre évident et court — ça ralentit sans bénéfice. Complémentaire de la règle sur la sortie du mode plan (relecture du plan avant de désactiver le mode), pas un doublon.
 
-→ Skill : `Skills/passer-en-mode-plan/SKILL.md`
-
----
-Tags : #claude-code #planification
-Dernière vérification : septembre 2026
+Source : `Fiches/quand-passer-en-mode-plan.md`
