@@ -32,7 +32,14 @@
 .NOTES
     Si ni -All ni -Skill ne sont fournis, le script bascule en sélection interactive :
     il affiche la liste des skills numérotée, puis demande soit des numéros séparés
-    par des virgules (ex: 1,3,4), soit 'tous' pour tout sélectionner.
+    par des virgules (ex: 1,3,4), soit 'tous' pour tout sélectionner. Dans ce mode,
+    les skills déjà présents et à jour dans le projet sont masqués de la liste pour
+    la garder courte lors d'une resynchronisation.
+
+    Si -ProjectPath n'est pas fourni, le script propose la liste des projets déjà
+    synchronisés (historique conservé dans
+    "$env:LOCALAPPDATA\ClaudeSkillsSync\projects.json") afin de resynchroniser
+    rapidement sans retaper le chemin complet.
 
 .PARAMETER SourcePath
     Dossier source contenant les skills (sous-dossiers avec SKILL.md). Par défaut :
@@ -53,7 +60,7 @@
 #>
 [CmdletBinding(SupportsShouldProcess = $true, DefaultParameterSetName = 'Sync')]
 param(
-    [Parameter(ParameterSetName = 'Sync', Mandatory = $true, Position = 0)]
+    [Parameter(ParameterSetName = 'Sync', Position = 0)]
     [ValidateScript({
         if (-not (Test-Path -LiteralPath $_ -PathType Container)) {
             throw "Le dossier projet n'existe pas : $_"
@@ -130,6 +137,85 @@ function Format-SkillList {
     }
 }
 
+function Get-ProjectHistoryPath {
+    Join-Path $env:LOCALAPPDATA 'ClaudeSkillsSync\projects.json'
+}
+
+function Get-ProjectHistory {
+    $path = Get-ProjectHistoryPath
+    if (-not (Test-Path -LiteralPath $path -PathType Leaf)) {
+        return @()
+    }
+    try {
+        $data = Get-Content -LiteralPath $path -Raw -Encoding UTF8 | ConvertFrom-Json
+        if ($null -eq $data) { return @() }
+        return @($data)
+    } catch {
+        return @()
+    }
+}
+
+function Save-ProjectHistory {
+    param([array]$Entries)
+
+    $path = Get-ProjectHistoryPath
+    $dir = Split-Path -Path $path -Parent
+    if (-not (Test-Path -LiteralPath $dir -PathType Container)) {
+        New-Item -ItemType Directory -Path $dir -Force | Out-Null
+    }
+    $Entries | ConvertTo-Json -Depth 3 | Set-Content -LiteralPath $path -Encoding UTF8
+}
+
+function Update-ProjectHistory {
+    param([string]$Path)
+
+    $normalized = $Path.TrimEnd('\', '/')
+    $history = @(Get-ProjectHistory | Where-Object { $_.Path -and ($_.Path.TrimEnd('\', '/') -ne $normalized) })
+    $entry = [pscustomobject]@{ Path = $normalized; LastSync = (Get-Date).ToString('o') }
+    $history = @($entry) + $history
+    if ($history.Count -gt 20) {
+        $history = $history[0..19]
+    }
+    Save-ProjectHistory -Entries $history
+}
+
+function Select-ProjectPath {
+    $history = @(Get-ProjectHistory | Where-Object { $_.Path -and (Test-Path -LiteralPath $_.Path -PathType Container) })
+
+    if ($history.Count -eq 0) {
+        return Read-Host "Chemin du projet cible"
+    }
+
+    Write-Host "Projets deja synchronises :`n"
+    for ($i = 0; $i -lt $history.Count; $i++) {
+        $last = [datetime]$history[$i].LastSync
+        Write-Host ("  {0}. {1}  (dernier sync : {2})" -f ($i + 1), $history[$i].Path, $last.ToString('yyyy-MM-dd HH:mm'))
+    }
+    Write-Host ("  {0}. Autre projet (nouveau chemin)" -f ($history.Count + 1))
+    Write-Host ""
+
+    $choice = Read-Host "Choix"
+    $n = 0
+    if ([int]::TryParse($choice, [ref]$n) -and $n -ge 1 -and $n -le $history.Count) {
+        return $history[$n - 1].Path
+    }
+    return Read-Host "Chemin du projet cible"
+}
+
+function Test-SkillUpToDate {
+    param(
+        [string]$SourceDir,
+        [string]$DestDir
+    )
+
+    if (-not (Test-Path -LiteralPath $DestDir -PathType Container)) {
+        return $false
+    }
+
+    & robocopy $SourceDir $DestDir /MIR /L /NFL /NDL /NJH /NP | Out-Null
+    return ($LASTEXITCODE -eq 0)
+}
+
 function Sync-OneSkill {
     [CmdletBinding(SupportsShouldProcess = $true)]
     param(
@@ -187,6 +273,20 @@ if ($List) {
     return
 }
 
+if (-not $ProjectPath) {
+    $ProjectPath = Select-ProjectPath
+}
+if (-not (Test-Path -LiteralPath $ProjectPath -PathType Container)) {
+    throw "Le dossier projet n'existe pas : $ProjectPath"
+}
+
+$destRoot = Join-Path $ProjectPath '.claude\skills'
+if (-not (Test-Path -LiteralPath $destRoot)) {
+    if ($PSCmdlet.ShouldProcess($destRoot, 'Creer le dossier')) {
+        New-Item -ItemType Directory -Path $destRoot -Force | Out-Null
+    }
+}
+
 if ($All) {
     $selected = $available
 } elseif ($Skill -and $Skill.Count -gt 0) {
@@ -201,14 +301,30 @@ if ($All) {
         $match
     }
 } else {
-    # Ni -All ni -Skill : selection interactive par numero.
-    Write-Host "Skills disponibles dans $SourcePath :`n"
-    Format-SkillList -Skills $available -Numbered
+    # Ni -All ni -Skill : selection interactive par numero, en masquant les
+    # skills deja presents et a jour dans le projet cible pour raccourcir la liste.
+    $toShow = @($available | Where-Object {
+        $destDir = Join-Path $destRoot $_.Name
+        -not (Test-SkillUpToDate -SourceDir $_.Path -DestDir $destDir)
+    })
+
+    if ($toShow.Count -eq 0) {
+        Write-Host "Tous les skills sont deja a jour dans $destRoot."
+        exit 0
+    }
+
+    $maskedCount = $available.Count - $toShow.Count
+    Write-Host "Skills disponibles pour $ProjectPath :"
+    if ($maskedCount -gt 0) {
+        Write-Host "($maskedCount deja a jour, masque(s))"
+    }
+    Write-Host ""
+    Format-SkillList -Skills $toShow -Numbered
     Write-Host ""
     $reponse = Read-Host "Skills a synchroniser : numeros separes par des virgules (ex: 1,3,4), ou 'tous'"
 
     if ($reponse.Trim() -match '^(tous|all|\*)$') {
-        $selected = $available
+        $selected = $toShow
     } else {
         $indices = $reponse -split ',' | ForEach-Object { $_.Trim() } | Where-Object { $_ -ne '' }
         if ($indices.Count -eq 0) {
@@ -216,18 +332,11 @@ if ($All) {
         }
         $selected = foreach ($idx in $indices) {
             $n = 0
-            if (-not [int]::TryParse($idx, [ref]$n) -or $n -lt 1 -or $n -gt $available.Count) {
-                throw "Numero invalide : '$idx'. Choisissez entre 1 et $($available.Count), ou 'tous'."
+            if (-not [int]::TryParse($idx, [ref]$n) -or $n -lt 1 -or $n -gt $toShow.Count) {
+                throw "Numero invalide : '$idx'. Choisissez entre 1 et $($toShow.Count), ou 'tous'."
             }
-            $available[$n - 1]
+            $toShow[$n - 1]
         }
-    }
-}
-
-$destRoot = Join-Path $ProjectPath '.claude\skills'
-if (-not (Test-Path -LiteralPath $destRoot)) {
-    if ($PSCmdlet.ShouldProcess($destRoot, 'Creer le dossier')) {
-        New-Item -ItemType Directory -Path $destRoot -Force | Out-Null
     }
 }
 
@@ -245,6 +354,10 @@ $errors = $results | Where-Object { $_.Status -like 'ERREUR*' }
 if ($errors) {
     Write-Warning "$($errors.Count) skill(s) en erreur."
     exit 1
+}
+
+if (-not $WhatIfPreference) {
+    Update-ProjectHistory -Path $ProjectPath
 }
 
 # Robocopy laisse un $LASTEXITCODE non nul (1, 2, 3...) meme en cas de succes
