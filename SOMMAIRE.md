@@ -11,7 +11,7 @@ Légende : ✅ fait · ⬜ à faire
 | 1 | ✅ | Transmettre un CDCF détaillé sans saturer le contexte | [fiches/workflow-cdcf-claude-code.md](fiches/workflow-cdcf-claude-code.md) | #claude-code #planification |
 | 2 | ⬜ | Sortir du Plan Mode seulement après relecture du plan | — | #claude-code #planification |
 | 3 | ⬜ | Committer et `/clear` entre chaque lot de dev | — | #claude-code #contexte |
-| 4 | ⬜ | Sub-agent dédié à la revue contradictoire d'un diff | — | #claude-code #sub-agents |
+| 4 | ✅ | Sub-agent dédié à la revue contradictoire d'un diff | [fiches/sub-agent-revue-diff.md](fiches/sub-agent-revue-diff.md) | #claude-code #sub-agents |
 | 5 | ⬜ | Créer une commande slash personnalisée réutilisable | — | #claude-code #commandes |
 | 6 | ✅ | CLAUDE.md global vs CLAUDE.md par projet | [fiches/claude-md-global-vs-projet.md](fiches/claude-md-global-vs-projet.md) | #claude-code #memoire |
 | 7 | ⬜ | Découper l'exploration d'un gros repo existant par lot | — | #claude-code #contexte |
@@ -73,6 +73,7 @@ Légende : ✅ fait · ⬜ à faire
 |---|---|---|---|---|
 | 34 | ✅ | Appliquer des règles de sécurité de l'information dans un projet | [fiches/regles-securite-information-projet.md](fiches/regles-securite-information-projet.md) | #securite #methode |
 | 35 | ✅ | Séparer l'information propriété d'une entreprise de la méthode personnelle ou connaissance publique | [fiches/separer-info-entreprise-vs-personnel.md](fiches/separer-info-entreprise-vs-personnel.md) | #entreprise #confidentialite #methode |
+| 36 | ✅ | Synchronisation automatique entre ce hub et les projets (push après création, pull des skills créés ailleurs) | [fiches/synchronisation-automatique-hub-skills-projets.md](fiches/synchronisation-automatique-hub-skills-projets.md) | #claude-code #skills #methode |
 
 ## Propositions non encore validées
 
