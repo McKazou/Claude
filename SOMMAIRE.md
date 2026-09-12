@@ -53,6 +53,12 @@ Légende : ✅ fait · ⬜ à faire
 | 14 | ⬜ | Utiliser les Projects pour cloisonner la mémoire par contexte | — | #claude-ai #memoire |
 | 15 | ⬜ | Artifacts : quand Claude en crée un, et comment itérer dessus | — | #claude-ai #artifacts |
 
+## Informations personnelles
+
+| ID | Statut | Sujet | Fiche | Tags |
+|---|---|---|---|---|
+| 30 | ✅ | Fiche utilisateur — seul emplacement des informations personnelles | [fiches/utilisateur-pierre-leroy.md](fiches/utilisateur-pierre-leroy.md) | #utilisateur #personnel |
+
 ## Propositions non encore validées
 
 *(à valider ou supprimer — ajoutées à titre de suggestion, pas encore demandées explicitement)*
