@@ -38,6 +38,13 @@ Légende : ✅ fait · ⬜ à faire
 | 9 | ⬜ | Signes qu'une session a besoin d'un contexte neuf | — | #contexte |
 | 10 | ⬜ | Utiliser des sessions parallèles / worktrees git pour isoler des tâches | — | #claude-code #contexte |
 
+## Tokens & consommation
+
+| ID | Statut | Sujet | Fiche | Tags |
+|---|---|---|---|---|
+| 31 | ✅ | Ce qu'est un token et ce qui fait varier leur nombre dans une requête | [fiches/comprendre-tokens-et-consommation.md](fiches/comprendre-tokens-et-consommation.md) | #tokens #contexte #methode |
+| 32 | ✅ | Réduire la consommation de tokens d'une session Claude Code | [fiches/reduire-consommation-tokens.md](fiches/reduire-consommation-tokens.md) | #tokens #contexte #performance #methode |
+
 ## Prompting & interactions
 
 | ID | Statut | Sujet | Fiche | Tags |
