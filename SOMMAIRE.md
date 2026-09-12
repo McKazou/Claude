@@ -65,6 +65,14 @@ Légende : ✅ fait · ⬜ à faire
 | ID | Statut | Sujet | Fiche | Tags |
 |---|---|---|---|---|
 | 30 | ✅ | Fiche utilisateur — seul emplacement des informations personnelles | [fiches/utilisateur-pierre-leroy.md](fiches/utilisateur-pierre-leroy.md) | #utilisateur #personnel |
+| 33 | ✅ | Respecter la vie privée de l'utilisateur dans toute session | [fiches/respecter-vie-privee-utilisateur.md](fiches/respecter-vie-privee-utilisateur.md) | #personnel #confidentialite #utilisateur |
+
+## Sécurité & confidentialité de l'information
+
+| ID | Statut | Sujet | Fiche | Tags |
+|---|---|---|---|---|
+| 34 | ✅ | Appliquer des règles de sécurité de l'information dans un projet | [fiches/regles-securite-information-projet.md](fiches/regles-securite-information-projet.md) | #securite #methode |
+| 35 | ✅ | Séparer l'information propriété d'une entreprise de la méthode personnelle ou connaissance publique | [fiches/separer-info-entreprise-vs-personnel.md](fiches/separer-info-entreprise-vs-personnel.md) | #entreprise #confidentialite #methode |
 
 ## Propositions non encore validées
 
