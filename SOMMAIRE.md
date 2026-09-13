@@ -75,6 +75,13 @@ Légende : ✅ fait · ⬜ à faire
 | 35 | ✅ | Séparer l'information propriété d'une entreprise de la méthode personnelle ou connaissance publique | [fiches/separer-info-entreprise-vs-personnel.md](fiches/separer-info-entreprise-vs-personnel.md) | #entreprise #confidentialite #methode |
 | 36 | ✅ | Synchronisation automatique entre ce hub et les projets (push après création, pull des skills créés ailleurs) | [fiches/synchronisation-automatique-hub-skills-projets.md](fiches/synchronisation-automatique-hub-skills-projets.md) | #claude-code #skills #methode |
 
+## Méthode — structurer une base de connaissances (portable à tout sujet)
+
+| ID | Statut | Sujet | Fiche | Tags |
+|---|---|---|---|---|
+| 37 | ✅ | Structurer une base de connaissances par fiches, sur n'importe quel sujet | [fiches/structurer-une-base-de-connaissances-par-fiches.md](fiches/structurer-une-base-de-connaissances-par-fiches.md) | #methode #base-de-connaissances #documentation |
+| 38 | ✅ | Gérer images et médias dans une base de fiches | [fiches/gerer-images-et-medias-dans-une-fiche.md](fiches/gerer-images-et-medias-dans-une-fiche.md) | #methode #base-de-connaissances #medias #documentation |
+
 ## Propositions non encore validées
 
 *(à valider ou supprimer — ajoutées à titre de suggestion, pas encore demandées explicitement)*
